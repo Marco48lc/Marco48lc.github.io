@@ -1,13 +1,53 @@
-<p>here are the different sites:</p>
-<p>Marco48lc.github.io/emojitesting.html</p>
-<p>Marco48lc.github.io/imagetest.html</p>
-<p>Marco48lc.github.io/markssecretsite.html - doesn’t really work</p>
-<p>Marco48lc.github.io/videossite.html</p>
-<p>Marco48lc.github.io/​​.html</p>
-<p>Marco48lc.github.io/chatroom.html</p>
-
-
-
-
-
-
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter username..."
+              required
+            />
+          </div>
+          <div class="form-control">
+            <label for="room">Channels</label>
+            <select name="room" id="room">
+              <option value="General">General</option>
+              <option value="Cool Zone!">Cool Zone!</option>
+              <option value="UN Army.">UN Army.</option>
+              <option value="Private.">Private.</option>
+              <option value="DEV PURPOSES ONLY!">
+                DEVELOPMENT PURPOSES ONLY!
+              </option>
+              <option value="RESTRICTED AREA" id="RESTRICTED">
+                RISTRICTED AREA!!!!!!!
+              </option>
+            </select>
+          </div>
+          <button type="submit" class="btn">Join Channel!</button>
+        </form>
+      </main>
+      <button onclick="c()" class="fre">Create Server [BETA]</button>
+    </div>
+  </body>
+  <button onclick="tu()" class="zt">Create Channel.</button
+  ><br />
+  <script>
+    function c() {
+      window.location.replace("https://chat-thing-8263.glitch.me/");
+    }
+    function tu() {
+      var te = prompt("Channel Name?");
+      var x = document.getElementById("room");
+      var option = document.createElement("option");
+      option.text = te;
+      var sel = x.options[x.selectedIndex];
+      x.add(option, sel);
+      alert("Check The Channel List And Join The Channel.");
+      alert("Send The Link To Your Friend!");
+      alert(
+        "The Channel Is Private, And Will Only Be Accessible To Someone Who Knows Your Link."
+      );
+    }
+    function gt() {
+      window.location.replace("https://chat-thing-8263.glitch.me/");
+    }
+  </script>
+</html>

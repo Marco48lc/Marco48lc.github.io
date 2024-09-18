@@ -1,51 +1,54 @@
-#welcome, #messages{
-	background-color: rgb(48, 48, 48);
-	color: white;
-	padding: 10px;
-	margin-right: 83%;
-	font-family: monospace;
-	font-weight: normal;
+
+.join-main .btn {
+  margin-top: 20px;
+  width: 100%;
 }
 
-#added{
-	color: blue;
-	font-style: italic;
-	font-size: small;
-	margin-left: 10px
-}	
+@media (max-width: 700px) {
+  .chat-main {
+    display: block;
+  }
 
-input{
-	border-style: hidden;
-	background-color: rgb(242, 242, 242);
-	font-weight: bold;
-	padding: 20px;
-	width: 14%;
-	border-bottom-style: outset;
+  .chat-sidebar {
+    display: none;
+  }
+}
+input {
+  background-color: #36383c;
+  border: 1px #282a2e groove;
+  color: white;
+  bottom: 0;
+}
+select {
+  background-color: #36383c;
+  border: 1px #282a2e groove;
+  color: var(--light-color);
 }
 
-@-webkit-keyframes FadeIn { 
-		0% { opacity:0;}
-		65% {opacity:0.5;}
-		100% {opacity: 1.0;}
+*:focus {
+  outline: none;
+  color: white;
 }
 
-@keyframes FadeIn { 
-		0% { opacity:0;}
-		65% {opacity:0.5;}
-		100% {opacity: 1.0;}
+#RESTRICTED {
+  background-color: red;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
 }
 
-#chat{
-	margin: 25px 83% 25px 0px;
-	background-color: rgba(169, 106, 106, 0.26);
-	word-wrap: break-word;
+option {
+  font-size: 17px;
 }
 
-#chat p {
-	-webkit-animation-name: FadeIn;
-	-webkit-animation-duration: 0.4s;
-	-webkit-animation-timing-function: ease-in-out;
-	animation-name: FadeIn;
-	animation-duration: 0.4s;
-	animation-timing-function: ease-in-out;
+input:focus {
+  color: lightgrey;
+}
+
+.fre {
+  font-size: 16px;
+  background-color: var(--light-color);
+  font-size: 18px;
+  width: 100%
 }
