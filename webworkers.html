@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+ 	<style>
+		#exp{
+			display: block;
+			background-color: rgb(224, 224, 224);
+			margin: 55px;
+			padding: 25px;
+			font-family: fantasy;
+			font-weight: bold;
+		}
+
+		button{
+			color: white;
+			background: rgb(50, 195, 50);
+			padding: 5px;
+			font-family: monospace;
+
+		}
+
+		input{
+			border-style: hidden;
+			background-color: rgb(224, 224, 224);
+			font-weight: bold;
+			padding: 5px;
+		}
+ 	</style>
+ </head>
+ <body>
+ 	<h1>Welcome to Samarth Shah's group chatroom.</h1>
+ 	<form onsubmit="window.open('viewer.html?'+username.value);">
+ 		<input id="username" name="username" type="text" placeholder="Enter your Username...">
+ 		<button>Add</button>
+ 	</form>
+  <p>Enter your ad hoc username to enter the chatroom!</p>
+  <p id = "exp">For every username entered, it will spawn a new Web Worker (i.e. SharedWorker). <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers">Click here</a> for Mozilla Documentation on WebWorkers. </p>
+ </body>
+</html>

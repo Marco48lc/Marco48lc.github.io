@@ -1,0 +1,51 @@
+#welcome, #messages{
+	background-color: rgb(48, 48, 48);
+	color: white;
+	padding: 10px;
+	margin-right: 83%;
+	font-family: monospace;
+	font-weight: normal;
+}
+
+#added{
+	color: blue;
+	font-style: italic;
+	font-size: small;
+	margin-left: 10px
+}	
+
+input{
+	border-style: hidden;
+	background-color: rgb(242, 242, 242);
+	font-weight: bold;
+	padding: 20px;
+	width: 14%;
+	border-bottom-style: outset;
+}
+
+@-webkit-keyframes FadeIn { 
+		0% { opacity:0;}
+		65% {opacity:0.5;}
+		100% {opacity: 1.0;}
+}
+
+@keyframes FadeIn { 
+		0% { opacity:0;}
+		65% {opacity:0.5;}
+		100% {opacity: 1.0;}
+}
+
+#chat{
+	margin: 25px 83% 25px 0px;
+	background-color: rgba(169, 106, 106, 0.26);
+	word-wrap: break-word;
+}
+
+#chat p {
+	-webkit-animation-name: FadeIn;
+	-webkit-animation-duration: 0.4s;
+	-webkit-animation-timing-function: ease-in-out;
+	animation-name: FadeIn;
+	animation-duration: 0.4s;
+	animation-timing-function: ease-in-out;
+}
