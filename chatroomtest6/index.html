@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+  </head>
+  <body>
+    <div id='chat-container'>
+        <div id='heading'>
+            ANONYMOUS CHAT ROOM 0
+        </div>
+        <div id='message-container'>
+            <ul id="message"></ul>
+        </div>
+        <div id='form-container'>
+            <form action="">
+                <input id="m" autocomplete="off" /><button>Send</button>
+              </form>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+
+        //join chatroom
+        
+        $(function() {
+            var socket = io();
+            socket.emit('new');
+            socket.emit('chat message', "A new user has joined")
+            $('form').submit(function(e) {
+                e.preventDefault();
+                socket.emit('chat message', $('#m').val());
+                $('#m').val('');
+                return false;
+            })
+            socket.on('new', function(n) {
+                $('#heading').text(`ANONYMOUS CHAT ROOM: ${n} USERS`)
+            })
+            socket.on('chat message', function(msg) {
+                var li = $('<li>');
+                $('#message').append(li.text(`${msg} - ${new Date().toLocaleTimeString()}`));
+                var realHeight = $("#message")[0].scrollHeight;
+                $('#message').scrollTop(realHeight);
+            })
+        })
+    </script>
+  </body>
+</html>
