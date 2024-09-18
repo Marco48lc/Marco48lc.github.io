@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Kodinger">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Register</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./css/account.css">
+</head>
+<body class="my-login-page">
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-100">
+				<div class="card-wrapper">
+					<div class="brand round">
+						<img src="./img/user.png" alt="user">
+					</div>
+					<!-- profile photo -->
+					<label class="center btn btn-light btn-sm btn-outline-info chooseimg">
+						<input type="file" id="file-uploader" style="display:none;" data-target="file-uploader" accept="image/png, image/jpeg"/>
+						Change your profile photo.
+					</label>
+
+					<div class="card fat">
+						<div class="card-body">
+							<h4 class="card-title">Register</h4>
+							<form method="POST" class="my-login-validation" novalidate="">
+								<div class="form-group">
+									<label for="name">Name</label>
+									<input id="name" type="text" class="form-control" name="name" required autofocus>
+								</div>
+
+								<div class="form-group">
+									<label for="email">Email Address</label>
+									<input id="email" type="email" class="form-control" name="email" required>
+								</div>
+
+								<div class="form-group">
+									<label for="password">Password</label>
+									<input id="password" type="password" class="form-control" name="password" required data-eye>
+								</div>
+
+								<div class="form-group">
+									<div class="custom-checkbox custom-control">
+										<input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
+										<label for="agree" class="custom-control-label">I agree to be a nice friend in this ChatRoom.</label>
+									</div>
+								</div>
+
+								<div class="form-group m-0 register">
+									<button id="submitBtn" type="submit" class="btn btn-primary btn-block">
+										Register
+									</button>
+								</div>
+								<div class="mt-4 text-center">
+									Already have an account? <a href="login.html">Login</a>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="footer">
+						AS Midterm &copy; 2020 &mdash; ChatRoom 
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-storage.js"></script>
+    <script src="./js/config.js"></script>
+    <script>
+		let name = document.getElementById("name");
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+		let submit = document.getElementById("submitBtn");
+		let photo = document.querySelector(".brand");
+		let agree = document.getElementsByName("agree");
+		let imageURL = 'user.png';
+		let curFile;
+		let storageReference;
+
+        submit.addEventListener("click", async function(e){
+			e.preventDefault();
+			if(name.value === ''){
+				alert("Name is required!");
+				return;
+			}
+			if(!agree[0].checked){
+				alert("Please agree to be a nice friend in this ChatRoom!");
+				return;
+			}
+			document.querySelector(".register").innerHTML = `
+				<button class="btn btn-primary btn-block" disabled>
+  					<span class="spinner-border spinner-border-sm"></span>
+  					Loading..
+				</button>`
+			await getImg();
+			
+            firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then( async ()=>{
+				let loginUser = firebase.auth().currentUser;
+				let id = loginUser.email.replace('@', '-').split('.').join('_');
+				let user = firebase.database().ref('users/' + id);
+				await firebase.database().ref('users/' + id).set({
+					name: name.value,
+					img: imageURL,
+					newAdd: [{
+						name: 'none'
+					}]
+				});
+				await firebase.database().ref('users/' + id + '/chatroom/All').set({
+					name: 'All',
+					img: `./img/all.png`,
+					roomId: 'All'
+				});
+				await firebase.database().ref('users/' + id + '/friends/group/All').set({
+					name: 'All',
+					img: `./img/all.png`,
+					roomId: 'All'
+				});
+				alert("Create Success!");
+				setTimeout(() => {
+					window.location.reload();
+				}, 1000);
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
+		});
+		
+		const fileUploader = document.querySelector('#file-uploader');
+		fileUploader.addEventListener('change', (e) => {
+			curFile = e.target.files[0];
+			imageURL = URL.createObjectURL(curFile);
+			photo.innerHTML = `
+				<img src="${imageURL}" alt="user">
+			`
+		});
+		
+		function getImg(){
+			return new Promise((resolve, reject) => {
+				if(imageURL !== 'user.png'){
+					const path = email.value.replace('@', '-').split('.').join('_');;
+					storageReference = firebase.storage().ref(path);
+					storageReference.put(curFile).then(() => {
+						storageReference.getDownloadURL().then(function (url) {
+							imageURL = url; 
+							resolve();
+						})
+					})
+				} else{
+					storageReference = firebase.storage().ref(imageURL);
+					storageReference.getDownloadURL().then(function (url) {
+						imageURL = url; 
+						resolve();
+					})
+				}
+			});
+		}
+    </script>
+    </body>
+</html>

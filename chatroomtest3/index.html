@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Chatroom</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/chatroom.css">
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-storage.js"></script>
+</head>
+
+<body>
+    <div class="container" style="height: 98vh;">
+      <div class="navbar d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow">
+        <div class="tool">
+          <!-- friend list -->
+          <div class="tool-item active">
+            <i class="material-icons">&#xe7ef;</i>
+          </div>
+          <!-- chat -->
+          <div class="tool-item">
+            <i class="material-icons">&#xe0d8;</i>
+          </div>
+          <!-- add -->
+          <div class="tool-item">
+            <i class="material-icons">&#xe7fe;</i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Friend List -->
+      <div class="list">
+        <div class="group"></div>
+        <div class="friend"></div>
+      </div>
+  
+      <!-- Chat -->
+      <div class="chat hidden">
+        <div class="chatlist" id="chatlist-collapse"></div>
+        <div class="dir-col talksec talksec-collapse">
+          <div class="talk hidden" id="talk-collapse"></div>
+          <div class="talk-input dir-row hidden" id="talkinput-collapse">
+            <input type="text" placeholder="Input Message" id="inputMsg">
+            <img src="./img/heart.png" class="sendheart">
+            <i class="material-icons send">&#xe163;</i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add friend -->
+      <div class="add-friends hidden">
+        <div class="search-friend dir-row">
+          <input type="text" id="search-input" placeholder="Enter Friends, ChatRoom">
+          <i class="material-icons">&#xe8b6;</i>
+        </div>
+        <div class="result">
+          <div class="title">
+            <span>Result</span>
+          </div>
+        </div>
+      </div>  
+      <!-- snackbar -->
+      <div id="snackbar">Some text some message..</div>
+      <!-- alert -->
+      <button type="button" class="btn btn-primary hidden" id="AlertBtn" data-toggle="modal" data-target="#myAlert"></button>
+      <div class="modal fade" id="myAlert">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="alert-item"></div>
+        </div>
+      </div>
+
+      <!-- Logout -->
+      <div class="dropup fix-bottom">
+        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">
+          <i class="material-icons">&#xe8b8;</i>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="login.html">Login</a>
+        </div>
+      </div>
+
+      <!-- Create Goup -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Choose Your Group Member</h5>
+              <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div style="display:flex;">
+              <input type="text" class="form__input" id="name" placeholder="Enter Group Name"/>
+              <i class="material-icons" style="display:flex; align-items: flex-end;">&#xe254;</i>
+            </div>
+            <!-- Friend check box -->
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger create" data-dismiss="modal">Create</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

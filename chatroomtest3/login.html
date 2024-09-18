@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chatroom Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/account.css">
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+    <script src="./js/config.js"></script>
+  </head>
+
+  <body class="my-login-page">
+    <section class="h-100">
+      <div class="container h-100">
+        <div class="row justify-content-md-center h-100">
+          <div class="card-wrapper">
+            <div class="brand">
+              <img src="./img/message.png" alt="logo">
+            </div>
+            <div class="card fat">
+              <div class="card-body">
+                <h4 class="card-title">Login</h4>
+                <form method="POST" class="my-login-validation" novalidate="">
+                  <div class="form-group">
+                    <label for="email">E-Mail Address
+                      <a href="javascript: void(0)" onclick="loginGoogle()" class="float-right">
+                        Login in with Google
+                      </a>
+                    </label>
+                    <input id="email" type="email" class="form-control" name="email" value="" autofocus>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="password">Password
+                      <a href="forgot.html" class="float-right">
+                        Forgot Password?
+                      </a>
+                    </label>
+                    <input id="password" type="password" class="form-control" name="password" data-eye>
+                      <div class="invalid-feedback">
+                        Password is required
+                      </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <div class="custom-checkbox custom-control">
+                      <input type="checkbox" name="remember" id="remember" class="custom-control-input">
+                      <label for="remember" class="custom-control-label">Remember Me</label>
+                    </div>
+                  </div>
+  
+                  <div class="form-group m-0">
+                    <button type="submit" class="btn btn-primary btn-block" id="loginBtn">
+                      Login
+                    </button>
+                  </div>
+                  <div class="mt-4 text-center">
+                    Don't have an account? <a href="register.html">Create One</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="footer">
+              AS Midterm &copy; 2020 &mdash; ChatRoom 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="./js/login.js"></script>
+  </body>
+</html>
