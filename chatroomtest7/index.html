@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/images/fav32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/fav16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/images/fav64.png" sizes="64x64">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta property="og:image" content="https://minnit.chat/images/MinnitLogoLarge.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta property="fb:app_id" content="412464722927030">
+<title>2020Chatroom Chat - Minnit</title>
+<meta name="description" content="Room 14 Chat">
+
+<style type="text/css">
+        .btn {
+            text-transform: initial !important;
+        }
+		@media only screen and (min-height: 744px) {
+			.captcha-chat {
+				height:calc(100vh - 60px) !important;
+			}
+		}
+		.minnit-iphone #chat-iframe{
+			height:98% !important;
+			height:98vh !important;
+			height:calc(100vh - 85px) !important;
+		}
+		.minnit-android #chat-iframe{
+			height:98% !important;
+			height:98vh !important;
+			height:calc(100vh - 56px) !important;
+		}
+		@media only screen and (min-height: 625px) {
+			.minnit-iphone #chat-iframe{
+				height:calc(100vh - 115px) !important;
+			}
+		}
+    </style>
+<link href="/css/main.css?mid=558" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha256-Md8eaeo67OiouuXAi8t/Xpd8t2+IaJezATVTWbZqSOw=" crossorigin="anonymous" defer />
+<script src="/js/logjserror.js?mid=3"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.bundle.js" integrity="sha256-VEkfzHCH2sMUViL3c3U1E8Z6xJiEZbGiCVs9rhSe1VQ=" crossorigin="anonymous" defer></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" defer>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,100,300,700" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+<script src="script.js"></script>
+</head>
+<body>
+<div id="navbar-placeholder"></div>
+<nav id="minnit-navbar-nav" class="navbar navbar-expand-md navbar-light bg-faded minnitnavbar hidden">
+<div class="">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNavDropdown">
+<ul class="navbar-nav">
+<a href="/"><span class="minnitinlinelogo"></span></a>
+<li class="nav-item" id="home_navbar_link">
+<a class="nav-link" href="/">Minnit</a>
+</li>
+<li class="nav-item" id="support_navbar_link">
+<a class="nav-link" href="/support">Support</a>
+</li>
+<li class="nav-item minnit-nav-registered hidden" id="createchat_navbar_link">
+<a class="nav-link" href="/createchat">Create a Chat</a>
+</li>
+<li class="nav-item minnit-nav-registered hidden" id="smileymaker_navbar_link">
+<a class="nav-link" href="/emoji">Personalize Emoji</a>
+</li>
+<li class="nav-item hidden minnit-nav-guest" id="register_navbar_link"><a class="nav-link" href="/register">
+<span data-localize="signup">Sign&nbsp;Up</span></a>
+</li>
+<li class="nav-item hidden minnit-nav-guest" id="register_navbar_link">
+<a class="nav-link" href="/login" id="loginhref"><span data-localize="login">Login</span></a>
+</li>
+<li class="nav-item dropdown minnit-nav-user-dropdown hidden minnit-nav-registered">
+<a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<img class="navatar" src="/images/userdefault.svg" width=30 height=30 id="navatar_icon" onerror="document.getElementById('navatar_icon').src='/images/userdefault.svg'"> <span class="navname" id="navname">guest1</span> <span class="fa fa-caret-down"></span>
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+<a class="dropdown-item" href="/profile" id="navprofile"><span data-localize="viewprofile">View Profile</span></a>
+<a class="dropdown-item" href="/accountsettings"><span data-localize="viewaccountsettings">View Account Settings</span></a>
+<a class="dropdown-item" href="/shop"><span>Shop</span></a>
+<a class="dropdown-item" href="/wiki"><span data-localize="wiki">Wiki</span></a>
+<a class="dropdown-item" href="/mysubscriptions"><span data-localize="managesubscriptions">Manage Subscriptions</span></a>
+<a class="dropdown-item" href="/buycoins"><span data-localize="buycoins">Buy coins</span></a>
+<a class="dropdown-item" href="/shop"><span data-localize="buypacks">Buy packs</span></a>
+<a class="dropdown-item" href="/changepassword"><span data-localize="changepw">Change Password</span></a>
+<a class="dropdown-item" id="darkmode-off" href="#" onclick="return setDarkMode(false);" data-localize="light-mode">Light Mode</a>
+<a class="dropdown-item" id="darkmode-on" href="#" onclick="return setDarkMode(true);" data-localize="dark-mode">Dark Mode</a>
+<a class="dropdown-item" href="/logout" id="logouthref"><span data-localize="logout">Logout</span></a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<noscript>
+        <div class="container warning">
+            <div class="alert alert-danger text-center">
+                <p>This website requires <strong>JavaScript</strong>.
+                    <br>
+                    <br>To continue using Minnit, please:</p>
+                <p><a href="//www.enable-javascript.com">Enable it in your browser's preferences</a></p>
+            </div>
+        </div>
+    </noscript>
+<div id="outdatedbrowser" class="alert alert-danger container hidden"><strong>Warning: Your browser is outdated!</strong> Support for your browser has ended. Please use a supported browser. For Windows XP, Firefox is still supported.</div><style>.page-top-banner{background-image: linear-gradient(to bottom, #ffff29, #f9f622, #f2ed19, #ece40f, #e5db02);}</style>
+<style>
+body{
+	text-align:center;
+}
+.officialchat{
+	color:#6699ff;
+	font-size:30px;
+}
+.sidebox-visible{
+	display:inline-block;
+	width:25%;
+	background-color:blue;
+	height:575px;
+	height:70vh;
+	overflow-y:auto;
+	min-height:300px;
+}
+.sidebox-chat{
+	width:60% !important;
+}
+</style>
+<style type="text/css">
+#chat-iframe{
+	width:90%;
+	height:575px;
+	width:90vw;
+	height:70vh;
+	max-width:1200px;
+	min-height:300px;
+}
+.minnit-embedded #minnitfooter, .minnit-embedded .page-footer, .minnit-embedded navbar-placeholder, .minnit-embedded hr, .minnit-embedded .container, .minnit-embedded .navbar{
+	display:none;
+	width:0px;
+	height:0px;
+}
+body .minnit-embedded{
+	height:0px;
+	width:0px;
+}
+.minnit-embedded #chat-iframe{
+	width:100%;
+	max-width:100%;
+	height:100%;
+	width:100vw;
+	max-width:100vw;
+	height:100vh;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+</style>
+<style type="text/css">
+#chatDescript a,#rulesText a{
+	text-decoration:underline;
+}
+</style>
+<style id='transparentStyle'>
+
+</style>
+<script type="text/javascript">
+function changeOuterBG(newImage,pagebgStyle) {
+    if (typeof(newImage) !== null && newImage.length > 2) {
+        var layout = 'background-size: 100% 100%;background-attachment: fixed;';
+        if (pagebgStyle == 2) {
+            layout = '';
+        } else if (pagebgStyle == 3) {
+            layout = 'background-repeat: no-repeat;background-attachment: fixed;background-position: center;';
+        }
+        document.getElementById('backgroundStyle').innerHTML = 'body{background-image:url(\'' + newImage + '\');' + layout + '}';
+    } else {
+        document.getElementById('backgroundStyle').innerHTML = 'body{}';
+    }
+}
+var urlparams = '';
+if (window.location.href.indexOf('?') != -1) {
+    urlparams = window.location.href.split('?')[1];
+}
+var externalMessagesEnabled = false;
+function enableExternalMessages() {
+	externalMessagesEnabled = true;
+}
+function handleExternalMessage(e) {
+	if (externalMessagesEnabled) {
+		document.getElementById('chat-iframe').contentWindow.handleExternalMessage(e);
+	}
+}
+function nicknameParentEmit(nickname) {
+	parent.postMessage("MinnitNickname="+nickname,"*");
+}
+window.addEventListener("message", handleExternalMessage, false);
+</script>
+<style id='backgroundStyle'>body{background-color:#ffffff}</style>
+<style id='pageFontStyle'>body{color:##000000}</style>
+<script type="text/javascript">
+var connectSuccess=false;
+function changeNavatar(newURL){
+	document.getElementById('navatar_icon').src=newURL;
+}
+
+function changeFontColor(newcol) {
+    document.getElementById('pageFontStyle').innerHTML = '#chatnamedescript, #chatnamedescript h3, #rules, #rules h3, #chatDescript a{color:' + newcol + '}';
+}
+document.addEventListener('DOMContentLoaded', function(event) {
+    changeFontColor('##000000');
+	$(window).blur(function() {
+		if (connectSuccess && !chatIsPopout){
+			document.getElementById('chat-iframe').contentWindow.setAwayFromChatPage(true);
+		}
+	});
+	$(window).focus(function() {
+		if (connectSuccess && !chatIsPopout){
+			document.getElementById('chat-iframe').contentWindow.setAwayFromChatPage(false);
+		}
+	});
+	$('#editchatbuttons').on('click', '.editchatbtn', function() {
+        window.open('/chatsettings?chat=2020Chatroom', '_blank');
+    });
+    $('#editchatbuttons').on('click', '.embedchatbtn', function() {
+        window.open('/embed?chat=2020Chatroom', '_blank');
+    });
+	
+    $(document).on('dragenter', function(event) {
+        event.preventDefault()
+		event.stopPropagation()
+    });
+    $(document).on('dragover', function(event) {
+        event.preventDefault()
+		event.stopPropagation()
+    });
+    $(document).on('dragleave', function(event) {
+        event.preventDefault()
+		event.stopPropagation()
+    });
+    $(document).on('drop', function(event) {
+        event.preventDefault()
+		event.stopPropagation()
+    });
+	$(document).on('click', function(event) {
+        if (event.target.id !== 'chat-iframe' && sentVars && typeof(document.getElementById('chat-iframe'))!=='undefined' && document.getElementById('chat-iframe')!==null && typeof(document.getElementById('chat-iframe').contentWindow)!=='undefined' && document.getElementById('chat-iframe').contentWindow!==null) {
+			//document.getElementById('chat-iframe').contentWindow.closeAll();
+		}
+    });
+});
+</script>
+<div id='field'></div>
+<script type="text/javascript">
+var sentVars = false;
+var yourInfo = {};
+var chatName = "chat-2020Chatroom";
+var chatNameOnly = "2020Chatroom";
+var updatetime = 1616716768;
+var chatThemeName = "";
+var customTextsEnabled = false;
+var customTexts = {};
+function sendDataToFrame(popout) {
+	varsToSend={};
+	varsToSend['chatName'] = chatName;
+	varsToSend['chatNameOnly'] = chatNameOnly;
+	varsToSend['clicktochat'] = false;
+	varsToSend['popcc2c'] = 0;
+	varsToSend['popcbp'] = 0;
+	varsToSend['chatlastfull'] = 2;
+	varsToSend['forcenickname']=1;
+	varsToSend['needchatpassword']=false;
+	varsToSend['lastactivetime']="1614814240";
+	varsToSend['createtime']="1596924067";
+	varsToSend['chatsettings'] = {"ab":8761,"abw":0,"ac":1,"admincss":"","ads":{},"allowpaiddelete":false,"almr":0,"andeye":false,"bc":"000000","betatest":false,"bgs":0,"bot":1,"botets":1,"brndimg":"","brndurl":"","bw":"fuck aaron scott shit shut","c":4,"camr":4,"canusesubrooms":true,"captchastrength":4,"ccss":"","ccssa":[],"chatlastfull":2,"chatpassword":"","chatpurpose":"","cl":1,"clicktochat":false,"communityvpnblock":false,"cpr":4,"cpw":1,"crtime":1596924067,"cs":1,"cssa":null,"custommax":false,"customtextenabled":false,"del":0,"delaymsgs":0,"delmsg":2,"delselfmsg":false,"deltime":0,"des":"Room 14 Chat","disableavs":false,"disabledmlink":false,"disabledms":false,"disabledmupload":false,"disableemoji":false,"disablefl":false,"disableil":false,"disablenick":false,"disableprof":false,"disablereglogin":false,"disableshop":false,"disableulist":false,"disableunames":false,"editmsg":5,"emoji":{},"emojionly":false,"enterprise":false,"eventique":false,"fnt":"","forcecustomemoji":false,"freeads":false,"freecustomcss":false,"freepinmsg":false,"freeplan100users":false,"freepoll":false,"freepreapprove":false,"fsn":1,"fss":"n","ftn":false,"gav":"","goinv":4,"hdwm":1,"hmb":0,"hmf":0,"ip":-1,"iplanid":0,"kl":15,"l":1,"lastpin":0,"lastrename":0,"lastupdated":0,"latime":1614814240,"lk":"","ls":1,"managerkey":"","maxbadwordoverride":0,"maxcssassetoverride":0,"maxemojioverride":0,"maxlinkoverride":0,"maxpinoverride":0,"maxreactionoverride":0,"maxreactionsoverride":0,"maxrenamechatoverride":0,"maxsubroomoverride":0,"maxusersoverride":0,"maxwelcomeoverride":0,"mb":12,"mbub":1,"mclr":4,"mcol":"","mfmt":0,"modkey":"","mrkdwn":2,"msglength":1000,"msize":17,"msnd":"","n":"2020Chatroom","navd":0,"ncol":5,"needchatpassword":false,"newln":2,"nofileupload":false,"noheaderfooter":false,"noipembedwarn":false,"novpn":false,"ob":"ffffff","oc":0,"of":"#000000","oid":"139017","olduserlimit":true,"organizationsettings":{"active":false,"faviconurls":{"appletouchicon":"","icon16x16":"","icon32x32":"","icon64x64":""},"name":"","registration":{"activationrequired":false,"captcharequired":false,"emailrequired":false},"usernamesettings":{"howoftenuserscanchangeusernamedays":0,"maxlengthchars":0,"minlengthchars":0}},"ownerkey":"","paymentsblocked":false,"pb":"","pc":0,"pcs":1,"permpause":false,"pg":"","pgs":1,"pinmsg":4,"planendts":1,"pollminrank":5,"popcbp":0,"popcc2c":0,"preappmsgs":false,"preappspeak":2,"preappwho":2,"ra":"","rcol0":"00cc22","rcol1":"add7f5","rcol2":"0063fa","rcol3":"fa8900","rcol4":"ffdc22","rcoloff":"ff0000","reactionlist":{},"reactions":false,"redir":"","ref":"","regularkey":"","reports":false,"rt":"Chatroom Rules:","rulreq":"1","rulreqnew":"1597010173","sharedmaxuserkey":"","simg":1,"slowmode":false,"slowmodeminrank":2,"slowmodeseconds":15,"slowmodespeakminrank":2,"sm":1,"smed":1,"sr":0,"srm":0,"sso":{"active":false,"disallowminnitregistrations":false,"loginbuttonimgurl":"","loginbuttontext":"","oauth2":{"accesstokenurl":"","authorizeurl":"","clientid":"","clientsecret":"","getuserinfourl":"","nicknamekey":"","profilepictureurlkey":"","scope":null,"uniqueuserkey":"","usernamekey":""},"registerbuttonimgurl":"","registerbuttontext":"","servicename":"","type":""},"staffkey":"","subrooms":{"asr":false,"customsubrooms":{"commandrm":{"displayname":"Command%20Room","minjoinrank":2,"mintalkrank":3}},"mainname":"Main Room","srm":40},"sysm":1,"tbfh":0,"trial":false,"u":1,"uberbattle":false,"under18":0,"uploads":{"maxsize0":1,"maxsize1":2,"maxsize2":3,"maxsize3":5,"rankperm0":"images","rankperm1":"images","rankperm2":"images","rankperm3":"images"},"usip":2500,"viewip":false,"viewipminrank":4,"viewipplanoverride":0,"welcomemessages":null,"whitelabel":{"allowminnitsales":false,"enabled":false},"wk":2,"wm":""}
+	if (typeof(knownChatLangs)!=='undefined'){
+		varsToSend['knownChatLangs'] = knownChatLangs;
+	}
+	if (typeof(chatlang)!=='undefined'){
+		varsToSend['chatlang']=chatlang;
+	}
+
+	varsToSend['guestnickname']=getURLParam('nickname');
+	varsToSend['forcesubroom']=getURLParam('subroom');
+	varsToSend['customclass']=getURLParam('customclass');
+	varsToSend['allowbw']="0";
+	varsToSend['customtexts']=customTexts;
+	varsToSend['chatcss']="";
+	varsToSend['freecss'] = false;
+	varsToSend['updatetime'] = updatetime;
+	varsToSend['forceref'] = "";
+	varsToSend['iplanid'] = 0;
+	varsToSend['planendts'] = 1;
+	varsToSend['referer'] = document.referrer;
+	varsToSend['chatThemeName'] = chatThemeName;
+	document.getElementById('chat-iframe').contentWindow.receiveVars(varsToSend, openedGGID);
+	sentVars = true;
+}
+function getURLParam(paramname) {
+	var thisResult = '';
+	var urlparams = window.location.href;
+	if (window.location.href.indexOf('?') != -1) {
+		urlparams = window.location.href.split('?')[1];
+		if (urlparams !== null && urlparams.indexOf(paramname + '=') > -1) {
+			thisResult = urlparams.split(paramname + '=')[1];
+			if (thisResult.indexOf('&')>-1) {
+				thisResult = thisResult.split('&')[0];
+			}
+		}
+	}
+	return thisResult;
+}
+function updateCSS(value, adminvalue){
+	document.getElementById('chat-iframe').contentWindow.updateCustomChatCSS(value, adminvalue);
+}
+function updateLang(value){
+	document.getElementById('chat-iframe').contentWindow.updateLang(value);
+}
+function changeEditButtons(show){
+	if (show){
+		document.getElementById('editchatbuttons').className = '';
+	}else{
+		document.getElementById('editchatbuttons').className = 'hidden';
+	}
+}
+function chatHasRules(){
+	if (typeof(document.getElementById('rules')) !== 'undefined' && document.getElementById('rules').innerHTML.length > 5){
+		return true;
+	}else{
+		return false;
+	}
+}
+function updateDemoBG(display) {
+    document.getElementById('chat-iframe').contentWindow.updateDemoBG(display);
+}
+function changeTheme(themeID, noMob, transparent){
+	document.getElementById('chat-iframe').contentWindow.changeTheme(themeID,noMob,transparent);
+}
+function changeMBub(bubbleID){
+	document.getElementById('chat-iframe').contentWindow.changeMBub(bubbleID);
+}
+function changeRules(newrules){
+	document.getElementById('rulesText').innerHTML = newrules;
+	//document.getElementById('rulesText').className='';
+}
+function changeRulesTitle(newtitle){
+	document.getElementById('rulesTitle').innerHTML = newtitle;
+}
+function setConnectSuccess(){
+	connectSuccess=true;
+}
+function changeDescript(newdescript){
+	document.getElementById('chatDescript').innerHTML = newdescript;
+}
+function changeChatName(newname){
+	document.getElementById('chatNameh3').innerHTML = newname;
+}
+function getCurrentDescript(){
+	return document.getElementById('chatDescript').innerHTML;
+}
+function changeURLParams(newURLParams){
+	document.getElementById('chat-iframe').contentWindow.changeURLParams(newURLParams);
+}
+function getCurrentRules(){
+	return document.getElementById('rulesText').innerHTML;
+}
+function getRulesTitle(){
+	if (document.getElementById('rulesTitle') != null && document.getElementById('rulesTitle').innerHTML != null && document.getElementById('rulesTitle').innerHTML.length > 2){
+		return document.getElementById('rulesTitle').innerHTML;
+	}else{
+		return "";
+	}
+}
+function getChatLang(){
+	if (typeof(chatlang)==='undefined'){
+		return 'en';
+	} else {
+		return chatlang;
+	}
+}
+function setTransparent(transparentMode){
+	if (transparentMode){
+		document.getElementById('transparentStyle').innerHTML="html, body, .container { background: none transparent !important; background-color: transparent !important; }";
+	}else{
+		document.getElementById('transparentStyle').innerHTML="";
+	}
+}
+function setDarkNavbar(darkMode){
+	if (darkMode){
+		$('#minnit-navbar-nav').addClass("minnitnavbar-dark");
+		$('#minnit-footer').addClass("minnit-dark-page");
+	}else{
+		$('#minnit-navbar-nav').removeClass("minnitnavbar-dark");
+		$('#minnit-footer').removeClass("minnit-dark-page");
+	}
+}
+function hideBanner(hide){
+	if (hide){
+		$('#minnit-navbar-nav').addClass('hidden');
+	}else{
+		$('#minnit-navbar-nav').removeClass('hidden');
+	}
+}
+function hideFooter(hide){
+	if (hide){
+		$('#minnit-footer-hr').addClass('hidden');
+		$('#minnit-footer').addClass('hidden');
+	}else{
+		$('#minnit-footer-hr').removeClass('hidden');
+		$('#minnit-footer').removeClass('hidden');
+	}
+}
+var navbarPrepared = false;
+function prepareNavBar(yourInfo) {
+	if (!navbarPrepared && urlparams.indexOf('embed') == -1) {
+		if (typeof(yourInfo.i)!=='undefined' && yourInfo.i !== null && !isNaN(yourInfo.i)) {
+			//registered!
+			$(".minnit-nav-registered").each(function(index) {
+				$(this).removeClass("hidden");
+			});
+			//prepare data
+			$("#navname").html(yourInfo.u);
+			$("#navprofile").attr("href", "/profile/"+yourInfo.u);
+			$("#logouthref").attr("href", "logout?return=/"+chatNameOnly);
+			$("#navatar_icon").attr("src", "https://cdn.minnit.chat/media/avatar_"+yourInfo.a);
+		} else {
+			//guest!
+			$(".minnit-nav-guest").each(function(index) {
+				$(this).removeClass("hidden");
+			});
+			$("#loginhref").attr("href", "login?return=/"+chatNameOnly);
+		}
+		if (yourInfo.r == 4 && urlparams.indexOf('cloudflare') !== -1) {
+			$("#cf-msg").removeClass("hidden");
+		} else if (yourInfo.r == 4 && typeof(document.referrer) !== 'undefined' && document.referrer !== null && document.referrer.indexOf('/createchat') !== -1) {
+			$("#newchat-msg").removeClass("hidden");
+		}
+		$("#minnit-navbar-nav").removeClass("hidden");
+		$("#chatnamedescript").removeClass("hidden");
+		document.getElementById('rulesText').className='';
+		navbarPrepared = true;
+	}
+}
+function toggleCaptchaChat(value) {
+	if (value) {
+		$("#chat-iframe").addClass("captcha-chat");
+		$("#chatnamedescript").addClass("hidden");
+		$("#navbar-placeholder").addClass("hidden");
+		$("#minnit-navbar-nav").addClass("hidden");
+	} else {
+		$("#chat-iframe").removeClass("captcha-chat");
+		$("#chatnamedescript").removeClass("hidden");
+		$("#navbar-placeholder").removeClass("hidden");
+		$("#minnit-navbar-nav").removeClass("hidden");
+	}
+}
+function togglePopoutChat(value) {
+	if (value) {
+		document.getElementById('popout-chat-div').className='';
+	} else {
+		document.getElementById('popout-chat-div').className='hidden';
+	}
+}
+document.addEventListener('DOMContentLoaded', function() {
+	document.getElementById('chat-iframe-landing-zone').innerHTML = displayChifr();
+});
+
+function displayChifr() {
+	var chifrParams = '';
+	if (chatName.toLowerCase() === 'chat-virtualjunction2') {
+		chifrParams = '&virtualjunction2';
+	}
+	return "<iframe id='chat-iframe' allowtransparency='true' sandbox='allow-downloads allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts allow-top-navigation allow-top-navigation-by-user-activation' src='/chifr.html?mid=1616716768"+chifrParams+"' style='border-width:0px;' scrolling='no'></iframe>";
+}
+var popoutWindow;
+var chatIsPopout=false;
+var popoutReloading = false;
+function popoutChat(urlParams) {
+	popoutWindow = window.open('/'+chatNameOnly+'?'+urlParams,'popUpWindow','height=450,width=800,left=100,top=100,resizable=yes,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no');
+	setTimeout(function() {
+		document.getElementById('chat-iframe-landing-zone').innerHTML='<div id="chat-iframe"></div>';
+		chatIsPopout=true;
+		popoutReloading=true;
+	}, 500);
+	popoutWindow.onunload=function() {
+		setTimeout(function() {
+			if (!popoutReloading) {
+				document.getElementById('chat-iframe-landing-zone').innerHTML=displayChifr();
+				chatIsPopout=false;
+			}
+			popoutReloading=false;
+		}, 500);
+	}
+}
+function getPopoutChatData() {
+	popoutWindow.sendPopoutChatData(displayChifr());
+}
+function loadGGID(ggidKey) {
+	ggidWindow = window.open('/ggid?gkey='+ggidKey+'&readable=1','popUpWindow','height=450,width=800,left=100,top=100,resizable=yes,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no');
+}
+
+var needToSetExtCookie = false;
+var extNewRAuthV = '';
+var extNewSTO = '';
+function checkExtCooks() {
+	var resp = {
+		'needToSetExtCookie': needToSetExtCookie,
+		'extNewRAuthV': extNewRAuthV,
+		'extNewSTO': extNewSTO
+	};
+	return resp;
+}
+function setExtCooks(thisRAuthV, thisSTO) {
+	extNewRAuthV = thisRAuthV;
+	extNewSTO = thisSTO;
+	needToSetExtCookie = true;
+}
+function clearExtCooks() {
+	needToSetExtCookie = false;
+}
+var newSigninToken='';
+var newRAuthV='';
+var openedGGID = false;
+var userIsRegisteredViaGGID = '';
+function getGGID(userInfo, signinToken, rAuthV) {
+	newSigninToken = signinToken;
+	newRAuthV = rAuthV;
+	yourInfo.i = userInfo.i;
+	yourInfo.u = userInfo.u;
+	yourInfo.n = userInfo.n;
+	if (yourInfo.n === '') {
+		yourInfo.n = yourInfo.u;
+	}
+	yourInfo.a = userInfo.a;
+	if (typeof(yourInfo.i)!=='undefined' && yourInfo.i!==null && !isNaN(yourInfo.i) && yourInfo.i > 0) {
+		userIsRegisteredViaGGID = true;
+	}
+	openedGGID = true;
+	document.getElementById('chat-iframe-landing-zone').innerHTML=displayChifr();
+}
+function failedGGID() {
+	document.getElementById('chat-iframe').contentWindow.failedGGID();
+}
+function getNewSignInToken() {
+	return newSigninToken;
+}
+function getSignInToken() {
+	//todo: check if this is in use?
+}
+function setUserIsRegisteredViaGGID(value) {
+	userIsRegisteredViaGGID = value;
+}
+function getUserIsRegisteredViaGGID() {
+	return userIsRegisteredViaGGID;
+}
+function getRAuthV() {
+	return newRAuthV;
+}
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+function togglePageBGCol(newCol) {
+	document.getElementById('vj2').innerHTML = "<style>body{background-color:black !important;}</style>";
+}
+</script>
+<div id="fb-root"></div>
+<div id="vj2"></div>
+<br />
+<div id="chatnamedescript" class="container chatPageInfo hidden">
+<br>
+<h3><span id='chatNameh3'>2020Chatroom</span>
+</h3>
+<span id='chatDescript'></span>
+<br />
+<div id="editchatbuttons" class="hidden">
+<div class="container hidden" id="cf-msg"><div class="alert alert-success"><strong><i class="fas fa-cloud fa-lg" aria-hidden="true"></i>&nbsp;<span data-localize="finalstepcf">Return to the Cloudflare Application, and in the Chat Name field, type: 2020Chatroom</span></strong></div></div>
+<div class="container hidden" id="newchat-msg"><div class="alert alert-success"><strong><i class="fas fa-star fa-lg" aria-hidden="true"></i>&nbsp;<span data-localize="stepthree">Final Step... Get Users!</span></strong><br /><span data-localize="gettingusers">Whether you embed your chat on your site, share it on Facebook/Twitter, or even just do some old fashioned advertising, getting users to your chat is key.<br />Go ahead and get out there -- and encourage them to tell their friends!</span></div></div>
+<button class="btn btn-primary editchatbtn"><i class="fas fa-cog fa-lg" aria-hidden="true"></i>&nbsp;<span data-localize="edityourchat">Chat Settings</span></button> <button class="btn btn-primary embedchatbtn"><i class="fas fa-link fa-lg" aria-hidden="true"></i>&nbsp;<span data-localize="edityourchat">Embed Your Chat</span></button><br /></div>
+<br>
+</div>
+<div id='containerDiv' class='' style='margin-top:25px;'>
+<div id='sidebox' class='hidden'></div>
+<span id='chat-iframe-landing-zone'></span>
+<div class="container chatPageInfo">
+<div style='height:35px'>
+<span style='display:inline-block;position:relative;bottom:6px' id='facebook-btn'>
+</span>
+<span id='twitter-btn'>
+</span>
+</div>
+<div id='rules'>
+<h3 id='rulesTitle'>
+</h3>
+<span id='rulesText' class='hidden'>
+Impersonations will result in a warning kick, then a ban.&lt;br&gt;Please do not swear or spam, or else it will result in bans too.&lt;br&gt;Do not type useless text, send weird memes, or it will result in kicks.&lt;br&gt;Ask Aaron/Scott for rank upgrades.&lt;br&gt;Thank you.&lt;br&gt;Please use real name!&lt;br&gt;Useless names will also result in ban, and multi browser will result in kick.
+</span>
+</div><br /><br /><br /><br /><br /><br /><br />
+<br>
+</div>
+</div>
+<hr id="minnit-footer-hr" />
+
+<footer id="minnit-footer" class="hidden page-footer font-small stylish-color-dark pt-4 mt-4">
+
+<div class="container text-center text-md-left">
+<div class="row">
+
+<div class="col-md-4">
+<h6 class="text-uppercase mb-4 mt-3 font-weight-bold text-muted">About</h6>
+<p>Minnit allows you to create a free chat to embed on your website or blog.</p>
+</div>
+
+<hr class="clearfix w-100 d-md-none">
+
+<div class="col-md-2 mx-auto">
+<h6 class="text-uppercase mb-4 mt-3 font-weight-bold text-muted">Product</h6>
+<ul class="list-unstyled">
+<li>
+<a href="/createchat">Create Chat</a>
+</li>
+<li>
+<a href="/yourchats">View Your Chats</a>
+</li>
+<li>
+<a href="/pricing">Premium Plans</a>
+</li>
+<li>
+<a href="/emoji">Emoji Customization</a>
+</li>
+</ul>
+</div>
+
+<hr class="clearfix w-100 d-md-none">
+
+<div class="col-md-2 mx-auto hidden" id="minnit-community">
+<h6 class="text-uppercase mb-4 mt-3 font-weight-bold text-muted">Community</h6>
+<ul class="list-unstyled">
+<li>
+<a href="/discover">Discover New Chats</a>
+</li>
+<li>
+<a href="https://forum.minnit.chat">Forum</a>
+</li>
+</ul>
+</div>
+<div class="col-md-2 mx-auto">
+<h6 class="text-uppercase mb-4 mt-3 font-weight-bold text-muted">Company</h6>
+<ul class="list-unstyled">
+<li>
+<a href="/about">About</a>
+</li>
+<li>
+<a href="https://blog.minnit.chat">Blog</a>
+</li>
+<li>
+<a href="https://wiki.minnit.chat/Roadmap" target="_blank">Roadmap</a>
+</li>
+<li>
+<a href="https://www.facebook.com/MinnitChat" target="_blank">Facebook</a>
+</li>
+<li>
+<a href="https://twitter.com/MinnitChat" target="_blank">Twitter</a>
+</li>
+</ul>
+</div>
+
+<hr class="clearfix w-100 d-md-none">
+
+<div class="col-md-2 mx-auto">
+<h6 class="text-uppercase mb-4 mt-3 font-weight-bold text-muted">Resources</h6>
+<ul class="list-unstyled">
+<li>
+<a href="/support">Support</a>
+</li>
+<li>
+<a href="/contact">Contact</a>
+</li>
+<li>
+<a href="/wiki">Wiki</a>
+</li>
+<li>
+<a href="/privacy">Privacy</a>
+</li>
+<li>
+<a href="/terms">Terms</a>
+</li>
+</ul>
+</div>
+
+</div>
+</div>
+<hr>
+<div class="text-center py-3 hidden minnit-nav-guest">
+<ul class="list-unstyled list-inline mb-0">
+<li class="list-inline-item">
+<h5 class="mb-1">Register for free</h5>
+</li>
+<li class="list-inline-item">
+<a href="/register" class="register-btn-footer btn btn-danger btn-rounded">Sign up!</a>
+</li>
+</ul>
+</div>
+
+<div class="footer-copyright py-3 text-center">
+© 2020 Minnit LTD. All rights reserved.
+</div>
+
+</footer>
+</body>
+</html>
