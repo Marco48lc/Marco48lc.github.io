@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Cable</title>
+  </head>
+  <body>
+    <div class="join-container">
+      <header class="join-header">
+        <div class="join-actual-main"></div>
+        <h1>Cable</h1>
+      </header>
+      <main class="join-main">
+        <form action="chat.html">
+          <div class="form-control">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter username..."
+              required
+            />
+          </div>
+          <div class="form-control">
+            <label for="room">Channels</label>
+            <select name="room" id="room">
+              <option value="General">General</option>
+              <option value="Cool Zone!">Cool Zone!</option>
+              <option value="UN Army.">UN Army.</option>
+              <option value="Private.">Private.</option>
+              <option value="DEV PURPOSES ONLY!">
+                DEVELOPMENT PURPOSES ONLY!
+              </option>
+              <option value="RESTRICTED AREA" id="RESTRICTED">
+                RISTRICTED AREA!!!!!!!
+              </option>
+            </select>
+          </div>
+          <button type="submit" class="btn">Join Channel!</button>
+        </form>
+      </main>
+      <button onclick="c()" class="fre">Create Server [BETA]</button>
+    </div>
+  </body>
+  <button onclick="tu()" class="zt">Create Channel.</button
+  ><br />
+  <script>
+    function c() {
+      window.location.replace("https://chat-thing-8263.glitch.me/");
+    }
+    function tu() {
+      var te = prompt("Channel Name?");
+      var x = document.getElementById("room");
+      var option = document.createElement("option");
+      option.text = te;
+      var sel = x.options[x.selectedIndex];
+      x.add(option, sel);
+      alert("Check The Channel List And Join The Channel.");
+      alert("Send The Link To Your Friend!");
+      alert(
+        "The Channel Is Private, And Will Only Be Accessible To Someone Who Knows Your Link."
+      );
+    }
+    function gt() {
+      window.location.replace("https://chat-thing-8263.glitch.me/");
+    }
+  </script>
+</html>
