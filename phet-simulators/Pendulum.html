@@ -1,0 +1,26 @@
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="phet-sim-level" content="production">
+  <title>‪Pendulum Lab‬ iframe test</title>
+</head>
+<body bgcolor="#FFFACD">
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif
+  }
+</style>
+<h1>Iframe Embedding Test</h1>
+
+<p>The simulation should be embedded below:</p>
+
+<iframe id="iframe" width="600" height="400" allowfullscreen scrolling="no"></iframe>
+<script type="application/javascript">
+  var suffix = window.location.search || '';
+  document.getElementById( 'iframe' ).setAttribute( 'src', 'pendulum-lab_en.html' + suffix );
+</script>
+</body>
+</html>
